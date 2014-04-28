@@ -59,6 +59,13 @@ apt_repository "chef-0.10" do
 end
 =end
 
+apt_repository "obs-zabbix" do
+  action :add
+  uri 'http://obs.express42.com/project_root:/zabbix2.2/precise/ ./'
+  key 'http://obs.express42.com/project_root:/zabbix2.2/precise/Release.key'
+end
+
+
 (node['base']['packages'] + node['base']['extra-packages']).uniq.each do |pkg|
     package pkg
 end
@@ -66,3 +73,4 @@ end
 chef_gem "pony"
 
 Chef::Config.exception_handlers = [Express42::MailHandler.new('chef@project.ru', ['admin@project.ru'])]
+

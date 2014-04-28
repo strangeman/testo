@@ -1,0 +1,22 @@
+{
+  "name": "zabbix-server",
+  "description": "",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "run_list": [
+    "lvm",
+    "nginx",
+    "postgresql",
+    "php",
+    "zabbix-server::database",
+    "zabbix-server::server",
+    "zabbix-server::web"
+  ],
+  "default_attributes": {
+    "zabbix-server": {
+      "database": {
+        "port": 5432
+      }
+    }
+  }
+}

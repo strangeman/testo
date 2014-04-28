@@ -7,9 +7,9 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define :testo do |main|
-    main.vm.box = "from_packer"
+    main.vm.box = "express42/ubuntu12.04-chef11"
     main.vm.hostname = "testo"
-    # config.vm.network :forwarded_port, guest: 80, host: 8880
+    config.vm.network :forwarded_port, guest: 80, host: 8888
     main.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--memory", "1024"]
     end
@@ -17,6 +17,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #    main.chef_zero.chef_repo_path = "."
 
     main.vm.provision :chef_solo do |chef|
+      # chef.chef_server_url = 'http://10.211.55.2:8889'
+      # chef.validation_key_path = ".chef/evtuhovich.pem"
+
       chef.environment = 'vagrant'
       chef.log_level = :info
 
@@ -27,7 +30,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # chef.encrypted_data_bag_secret_key_path = "./.chef/encrypted_data_bag_secret"
 
       chef.run_list = [
-          "role[base]"
+        "role[base]",
+        "recipe[base::zabbix]"
       ]
     end
   end

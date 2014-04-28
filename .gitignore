@@ -4,3 +4,4 @@ packer/output
 packer/packer_virtualbox-iso_virtualbox.box
 cookbooks
 tmp
+.chef/

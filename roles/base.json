@@ -12,6 +12,7 @@
     "recipe[sysctl]",
     "recipe[ntp]",
     "recipe[sudo]",
-    "recipe[openssh]"
+    "recipe[openssh]",
+    "recipe[zabbix]"
   ]
 }
