@@ -61,10 +61,17 @@ end
 
 apt_repository "obs-zabbix" do
   action :add
-  uri 'http://obs.express42.com/project_root:/zabbix2.2/precise/ ./'
-  key 'http://obs.express42.com/project_root:/zabbix2.2/precise/Release.key'
+  uri 'http://obs.express42.com/project_root:/zabbix2.2/trusty/ ./'
+  key 'http://obs.express42.com/project_root:/zabbix2.2/trusty/Release.key'
 end
 
+apt_repository "nginx" do
+  action :add
+  uri 'http://nginx.org/packages/mainline/ubuntu'
+  distribution 'trusty'
+  components ['nginx']
+  key 'http://nginx.org/packages/keys/nginx_signing.key'
+end
 
 (node['base']['packages'] + node['base']['extra-packages']).uniq.each do |pkg|
     package pkg

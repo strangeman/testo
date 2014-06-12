@@ -14,7 +14,7 @@ cookbook_file "/tmp/zbx_templates_base_e42.xml" do
   group "root"
 end
 
-zabbix_template "CPU_E42_Template"
+zabbix_template "Linux_Template"
 
 zabbix_application "Test application" do
   action :sync
@@ -86,6 +86,9 @@ zabbix_user_macro 'my_macro' do
   value 'foobar'
 end
 
+zabbix_template "/tmp/zbx_templates_base_e42.xml" do
+  action :import
+end
 
 zabbix_connect 'ZBX' do
   apiurl "http://localhost/api_jsonrpc.php"
@@ -93,6 +96,3 @@ zabbix_connect 'ZBX' do
   password "zabbix"
 end
 
-zabbix_template "/tmp/zbx_templates_base_e42.xml" do
-  action :import
-end

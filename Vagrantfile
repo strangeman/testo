@@ -7,6 +7,7 @@ VAGRANTFILE_API_VERSION = '2'
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.berkshelf.enable = true
+  config.omnibus.chef_version = :latest
 
   config.vm.define :testo do |main|
     config.vm.network :forwarded_port, guest: 80, host: 8888
@@ -34,8 +35,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       chef.run_list = [
         'role[base]',
+        'role[zabbix-db]',
+        'role[zabbix-server]',
         'recipe[base::zabbix]'
       ]
+
+      chef.json = {
+        postgresql: {
+          client: {
+            version: '9.3'
+          }
+        },
+        'zabbix-server' => {
+          database: {
+            version: '9.3'
+          }
+        }
+      }
     end
   end
 end

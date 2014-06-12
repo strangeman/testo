@@ -24,3 +24,23 @@ cookbook 'base',
 
 cookbook 'sysctl',
   git: 'git@github.com:express42-cookbooks/sysctl.git'
+
+cookbook 'zabbix',
+  path: '../zabbix'
+
+cookbook 'nginx',
+  git: 'git@github.com:express42-cookbooks/chef-nginx.git'
+
+cookbook 'postgresql',
+  git: 'git@github.com:express42-cookbooks/postgresql.git'
+
+cookbook 'php',
+  git: 'git@github.com:express42-cookbooks/php.git'
+
+cookbook 'partition',
+  git: 'git@github.com:express42-cookbooks/partition.git'
+
+cookbook 'zabbix-server',
+  git: 'git@github.com:express42-cookbooks/zabbix-server.git',
+  ref: 'zabbix2.2'
+
