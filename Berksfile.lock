@@ -15,15 +15,12 @@ DEPENDENCIES
     git: https://github.com/opscode-cookbooks/ntp.git
     revision: 335a88eea48d3f4a8765a37941980be4df0f97ac
   openssh
-  partition
-    git: git@github.com:express42-cookbooks/partition.git
-    revision: 2fa3aa3b1c9badaebcaeb63f05db37b138dec369
   php
     git: git@github.com:express42-cookbooks/php.git
-    revision: 5e7b85b793112ecee8926eff4c15b6ab2a0bfefd
-  postgresql
+    revision: 82cdb19806bd452e9ceb491b01507f51048231b5
+  postgresql_lwrp
     git: git@github.com:express42-cookbooks/postgresql.git
-    revision: b52f6da426d6c080319dc7fa7ed1c849b2ff9f98
+    revision: d922b83a1fedbce441a8e5268e68ecf6ac22e78f
   ssh_known_hosts
   sudo
     git: git@github.com:express42-cookbooks/sudo.git
@@ -38,8 +35,8 @@ DEPENDENCIES
     path: ../zabbix
   zabbix-server
     git: git@github.com:express42-cookbooks/zabbix-server.git
-    revision: 36275ce522772a89a8b3e3d1fa92e03fc93b343f
-    ref: zabbix2
+    revision: 32f443bf2df4af8a0cb0df9b361bf2546b12b4f8
+    ref: new_era
 
 GRAPH
   apt (2.4.1)
@@ -47,6 +44,7 @@ GRAPH
     apt (>= 0.0.0)
     sudo (>= 0.0.0)
     user (>= 0.0.0)
+  build-essential (2.0.6)
   chef-client (3.6.0)
     cron (>= 1.2.0)
     logrotate (>= 1.2.0)
@@ -59,11 +57,9 @@ GRAPH
   openssh (1.3.4)
     iptables (>= 0.0.0)
   partial_search (1.0.8)
-  partition (0.2.0)
-    lvm (>= 0.8.6)
-    zabbix (>= 0.1.1)
   php (0.1.0)
-  postgresql (0.2.3)
+  postgresql_lwrp (1.0.0)
+    apt (>= 0.0.0)
   ssh_known_hosts (1.3.2)
     partial_search (>= 0.0.0)
   sudo (1.1.1)
@@ -71,7 +67,9 @@ GRAPH
   user (0.3.1)
   zabbix (0.3.3)
     apt (>= 0.0.0)
-  zabbix-server (0.1.0)
+    build-essential (>= 0.0.0)
+  zabbix-server (1.0.0)
     lvm (>= 0.8.6)
-    nginx (>= 2.2.0)
-    partition (>= 0.1.0)
+    nginx (>= 2.1.1)
+    php (>= 0.0.0)
+    postgresql_lwrp (>= 0.0.0)

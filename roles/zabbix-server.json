@@ -6,7 +6,7 @@
   "run_list": [
     "lvm",
     "nginx",
-    "postgresql",
+    "postgresql_lwrp",
     "php",
     "zabbix-server::database",
     "zabbix-server::server",

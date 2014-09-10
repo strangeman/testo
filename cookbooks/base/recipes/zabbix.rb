@@ -6,9 +6,17 @@ zabbix_host node.fqdn do
   ip_address ip_mon
 end
 
-cookbook_file "/tmp/zbx_templates_base_e42.xml" do
+cookbook_file "/tmp/zbx_templates_linux.xml" do
   cookbook "zabbix" # take our template by default
-  source "zbx_templates_base_e42.xml"
+  source "zbx_templates_linux.xml"
+  mode 0755
+  owner "root"
+  group "root"
+end
+
+cookbook_file "/tmp/zbx_templates_all.xml" do
+  cookbook "zabbix" # take our template by default
+  source "zbx_templates_all.xml"
   mode 0755
   owner "root"
   group "root"
@@ -86,7 +94,11 @@ zabbix_user_macro 'my_macro' do
   value 'foobar'
 end
 
-zabbix_template "/tmp/zbx_templates_base_e42.xml" do
+zabbix_template "/tmp/zbx_templates_linux.xml" do
+  action :import
+end
+
+zabbix_template "/tmp/zbx_templates_all.xml" do
   action :import
 end
 
