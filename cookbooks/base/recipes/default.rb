@@ -61,8 +61,8 @@ end
 
 apt_repository "obs-zabbix" do
   action :add
-  uri 'http://obs.express42.com/project_root:/zabbix2.2/trusty/ ./'
-  key 'http://obs.express42.com/project_root:/zabbix2.2/trusty/Release.key'
+  uri 'http://obs.express42.com/project_root:/zabbix2.4/trusty/ ./'
+  key 'http://obs.express42.com/project_root:/zabbix2.4/trusty/Release.key'
 end
 
 apt_repository "nginx" do
