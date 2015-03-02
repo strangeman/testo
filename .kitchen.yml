@@ -1,0 +1,22 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  client_rb:
+    environment: vagrant
+
+platforms:
+  - name: ubuntu-14.04
+    driver:
+      box: express42/ubuntu-14.04
+  - name: ubuntu-12.04
+    driver:
+      box: express42/ubuntu12.04-chef11
+
+suites:
+  - name: base
+    run_list:
+      - role[base]
+    attributes:

@@ -1,43 +1,63 @@
-source 'https://api.berkshelf.com'
+source 'https://supermarket.chef.io'
 
-cookbook 'chef-client'
-cookbook 'ssh_known_hosts'
-cookbook 'openssh'
+group :base do
+  cookbook 'apt'
+  cookbook 'certificate'
+  cookbook 'chef-client'
+  cookbook 'cron'
+  cookbook 'helpers-express42', git: 'git@github.com:express42-cookbooks/helpers-express42.git'
+  cookbook 'locale'
+  cookbook 'lvm'
+  cookbook 'ntp'
+  cookbook 'openssh'
+  cookbook 'os-hardening'
+  cookbook 'postfix', git: 'git@github.com:express42-cookbooks/postfix.git'
+  cookbook 'rsyslog', git: 'git@github.com:express42-cookbooks/rsyslog.git'
+  cookbook 'ssh_known_hosts'
+  cookbook 'sudo'
+  cookbook 'sysctl'
+  cookbook 'timezone-ii'
+  cookbook 'user'
+end
 
-cookbook 'user',
-  git: 'https://github.com/fnichol/chef-user.git'
+group :databases do
+  cookbook 'mongodb'
+  cookbook 'postgresql_lwrp', git: 'git@github.com:express42-cookbooks/postgresql.git'
+  cookbook 'redis', git: 'git@github.com:express42-cookbooks/redis.git'
+end
 
-cookbook 'apt',
-  git: 'git@github.com:opscode-cookbooks/apt.git'
+group :development do
+  cookbook 'java'
+  cookbook 'jenkins'
+  cookbook 'php', git: 'git@github.com:express42-cookbooks/php.git'
+  cookbook 'ruby', git: 'git@github.com:express42-cookbooks/ruby.git'
+  cookbook 'runit'
+end
 
-cookbook 'ntp',
-  git: 'https://github.com/opscode-cookbooks/ntp.git'
+group :graylog2 do
+  cookbook 'elasticsearch'
+  cookbook 'graylog2'
+  cookbook 'java'
+  cookbook 'mongodb'
+end
 
-cookbook 'sudo',
-  git: 'git@github.com:express42-cookbooks/sudo.git'
+group :services do
+  cookbook 'aptly', git: 'git@github.com:express42-cookbooks/chef-aptly'
+  cookbook 'chef-server'
+  cookbook 'cobbler', git: 'git@github.com:express42-cookbooks/cobbler.git'
+  cookbook 'keepalived', git: 'git@github.com:express42-cookbooks/keepalived.git'
+  cookbook 'memcached', git: 'git@github.com:express42-cookbooks/memcached.git'
+  cookbook 'nfs'
+  cookbook 'nginx', git: 'git@github.com:evilmartians/chef-nginx', tag: 'v2.2.4'
+  cookbook 'openvpn', git: 'git@github.com:express42-cookbooks/openvpn.git'
+  cookbook 's3backup', git: 'git@github.com:express42-cookbooks/s3backup.git'
+end
 
-cookbook 'lvm',
-  git: 'https://github.com/opscode-cookbooks/lvm.git'
-
-cookbook 'base',
-  path: 'cookbooks/base'
-
-cookbook 'sysctl',
-  git: 'git@github.com:express42-cookbooks/sysctl.git'
-
-cookbook 'zabbix',
-  path: '../zabbix'
-
-cookbook 'nginx',
-  git: 'git@github.com:express42-cookbooks/chef-nginx.git'
-
-cookbook 'postgresql_lwrp',
-  git: 'git@github.com:express42-cookbooks/postgresql.git'
-
-cookbook 'php',
-  git: 'git@github.com:express42-cookbooks/php.git'
-
-cookbook 'zabbix-server',
-  git: 'git@github.com:express42-cookbooks/zabbix-server.git',
-  ref: 'new_era'
-
+group :zabbix do
+  cookbook 'nginx', git: 'git@github.com:evilmartians/chef-nginx', tag: 'v2.2.4'
+  cookbook 'php', git: 'git@github.com:express42-cookbooks/php.git'
+  cookbook 'postgresql_lwrp', git: 'git@github.com:express42-cookbooks/postgresql.git'
+  cookbook 'zabbix', git: 'git@github.com:express42-cookbooks/zabbix.git'
+  cookbook 'zabbix_server', git: 'git@github.com:express42-cookbooks/zabbix-server.git'
+  cookbook 'zabbix-templates', git: 'git@github.com:express42-cookbooks/zabbix-templates.git'
+end

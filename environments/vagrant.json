@@ -6,13 +6,20 @@
   "json_class": "Chef::Environment",
   "chef_type": "environment",
   "default_attributes": {
+    "authorization": {
+      "sudo": {
+        "passwordless": "true",
+        "users": [
+          "vagrant"
+        ]
+      }
+    },
     "openssh": {
       "server": {
         "password_authentication": "yes",
         "allow_agent_forwarding": "yes",
         "use_dns": "no",
-        "permit_root_login": "yes",
-        "subsystem": "sftp /usr/lib/openssh/sftp-server"
+        "permit_root_login": "yes"
       }
     },
     "postfix": {

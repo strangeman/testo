@@ -1,18 +1,61 @@
 {
   "name": "base",
-  "description": "common for all",
+  "description": "Base role",
   "chef_type": "role",
   "json_class": "Chef::Role",
+  "default_attributes": {
+    "authorization": {
+      "sudo": {
+        "include_sudoers_d": "true"
+      }
+    },
+    "chef_client": {
+      "interval": "300",
+      "log_file": "client.log",
+      "logrotate": {
+        "frequency": "daily",
+        "rotate": "7"
+      },
+      "splay": "10"
+    },
+    "ntp": {
+      "apparmor_enabled": false
+    },
+    "openssh": {
+      "server": {
+        "subsystem": "sftp /usr/lib/openssh/sftp-server"
+      }
+    }
+  },
+  "override_attributes": {
+    "authorization": {
+      "sudo": {
+        "groups": [
+          "sudo"
+        ]
+      }
+    }
+  },
   "run_list": [
-    "recipe[chef-client]",
-    "recipe[user::data_bag]",
-    "recipe[ssh_known_hosts]",
-    "recipe[base]",
     "recipe[apt]",
-    "recipe[sysctl]",
+    "recipe[chef-client::config]",
+    "recipe[chef-client::init_service]",
+    "recipe[chef-client::delete_validation]",
+    "recipe[helpers-express42::mail]",
+    "recipe[helpers-express42::network]",
+    "recipe[helpers-express42::packages]",
+    "recipe[locale]",
+    "recipe[lvm]",
     "recipe[ntp]",
+    "recipe[openssh]",
+    "recipe[postfix::default_server]",
+    "recipe[rsyslog]",
+    "recipe[ssh_known_hosts]",
     "recipe[sudo]",
     "recipe[openssh]",
+    "recipe[sysctl]",
+    "recipe[timezone-ii]",
+    "recipe[user::data_bag]",
     "recipe[zabbix]"
   ]
 }
