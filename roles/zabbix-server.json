@@ -8,9 +8,9 @@
     "nginx",
     "postgresql_lwrp",
     "php",
-    "zabbix-server::database",
-    "zabbix-server::server",
-    "zabbix-server::web"
+    "zabbix_lwrp::database",
+    "zabbix_lwrp::server",
+    "zabbix_lwrp::web"
   ],
   "default_attributes": {
     "zabbix-server": {

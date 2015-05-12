@@ -57,6 +57,6 @@
     "recipe[sysctl]",
     "recipe[timezone-ii]",
     "recipe[user::data_bag]",
-    "recipe[zabbix]"
+    "recipe[zabbix_lwrp]"
   ]
 }
