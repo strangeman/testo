@@ -2,16 +2,19 @@ source 'https://supermarket.chef.io'
 
 group :base do
   cookbook 'apt'
+  cookbook 'bsw_gpg'
   cookbook 'certificate'
   cookbook 'chef-client'
+  cookbook 'chef-vault'
   cookbook 'cron'
-  cookbook 'helpers-express42', git: 'git@github.com:express42-cookbooks/helpers-express42.git'
+  cookbook 'helpers_express42', git: 'git@github.com:express42-cookbooks/helpers_express42.git'
   cookbook 'locale'
   cookbook 'lvm'
   cookbook 'ntp'
   cookbook 'openssh'
   cookbook 'os-hardening'
   cookbook 'postfix', git: 'git@github.com:express42-cookbooks/postfix.git'
+  cookbook 'resolver'
   cookbook 'rsyslog', git: 'git@github.com:express42-cookbooks/rsyslog.git'
   cookbook 'ssh_known_hosts'
   cookbook 'sudo'
@@ -22,7 +25,7 @@ end
 
 group :databases do
   cookbook 'mongodb'
-  cookbook 'postgresql_lwrp', git: 'git@github.com:express42-cookbooks/postgresql.git'
+  cookbook 'postgresql_lwrp', git: 'git@github.com:express42-cookbooks/postgresql_lwrp.git'
   cookbook 'redis', git: 'git@github.com:express42-cookbooks/redis.git'
 end
 
@@ -30,7 +33,7 @@ group :development do
   cookbook 'java'
   cookbook 'jenkins'
   cookbook 'php', git: 'git@github.com:express42-cookbooks/php.git'
-  cookbook 'ruby', git: 'git@github.com:express42-cookbooks/ruby.git'
+  cookbook 'ruby_lwrp', git: 'git@github.com:express42-cookbooks/ruby_lwrp.git'
   cookbook 'runit'
 end
 
@@ -50,14 +53,14 @@ group :services do
   cookbook 'nfs'
   cookbook 'nginx', git: 'git@github.com:evilmartians/chef-nginx', tag: 'v2.2.4'
   cookbook 'openvpn', git: 'git@github.com:express42-cookbooks/openvpn.git'
+  cookbook 'rabbitmq'
   cookbook 's3backup', git: 'git@github.com:express42-cookbooks/s3backup.git'
 end
 
 group :zabbix do
   cookbook 'nginx', git: 'git@github.com:evilmartians/chef-nginx', tag: 'v2.2.4'
   cookbook 'php', git: 'git@github.com:express42-cookbooks/php.git'
-  cookbook 'postgresql_lwrp', git: 'git@github.com:express42-cookbooks/postgresql.git'
-  cookbook 'zabbix', git: 'git@github.com:express42-cookbooks/zabbix.git'
-  cookbook 'zabbix_server', git: 'git@github.com:express42-cookbooks/zabbix-server.git'
-  cookbook 'zabbix-templates', git: 'git@github.com:express42-cookbooks/zabbix-templates.git'
+  cookbook 'postgresql_lwrp', git: 'git@github.com:express42-cookbooks/postgresql_lwrp.git'
+  cookbook 'zabbix_lwrp', git: 'git@github.com:express42-cookbooks/zabbix_lwrp.git'
+  cookbook 'zabbix_templates', git: 'git@github.com:express42-cookbooks/zabbix_templates.git'
 end

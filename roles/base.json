@@ -19,7 +19,8 @@
       "splay": "10"
     },
     "ntp": {
-      "apparmor_enabled": false
+      "apparmor_enabled": false,
+      "use_cmos": false
     },
     "openssh": {
       "server": {
@@ -41,9 +42,9 @@
     "recipe[chef-client::config]",
     "recipe[chef-client::init_service]",
     "recipe[chef-client::delete_validation]",
-    "recipe[helpers-express42::mail]",
-    "recipe[helpers-express42::network]",
-    "recipe[helpers-express42::packages]",
+    "recipe[helpers_express42::mail]",
+    "recipe[helpers_express42::network]",
+    "recipe[helpers_express42::packages]",
     "recipe[locale]",
     "recipe[lvm]",
     "recipe[ntp]",
